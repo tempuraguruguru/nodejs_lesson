@@ -8,3 +8,6 @@ console.log(res); // 4
 
 res = calc.sub(3, 1);
 console.log(res); // 2no
+
+const year = 2002;
+console.log(year + "年は" + calc.LeapYear(year) + "日");
