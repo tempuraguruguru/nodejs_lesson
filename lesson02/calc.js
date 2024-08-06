@@ -19,5 +19,22 @@ module.exports = {
     },
     sub: (a, b) => {
         return a - 2*b;
+    },
+    LeapYear: (N) => {
+        let res = 0;
+        if(N % 4 != 0){
+            res = 365;
+        }else{
+            if(N % 100 != 0){
+                res = 366;
+            }else{
+                if(N % 400 != 0){
+                    res = 365;
+                }else{
+                    res = 366;
+                }
+            }
+        }
+        return res;
     }
 };
