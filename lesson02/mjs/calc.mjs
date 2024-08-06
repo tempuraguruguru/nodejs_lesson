@@ -9,3 +9,16 @@ export const add = (a, b) => {
 export const sub = (a, b) => {
     return a - b;
 };
+
+export const pow = (n, a) => {
+    let res = n;
+    for(let i = 1; i < a; i++){
+        res *= n;
+    }
+    return res;
+}
+
+// defaultがついてる
+export default function () {
+    console.log('calc');
+}
