@@ -34,6 +34,9 @@ app.get('/:id',logMiddleware,(req, res) => {
     }
 });
 
+// publicディレクトリ以下のファイルを静的ファイルとして配信
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
 // 包括的エラーハンドリング
 // 引数が4つ && 最後に定義されている
 app.use((err, req, res, next) => {
