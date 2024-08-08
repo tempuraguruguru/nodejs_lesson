@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('node:path');
 const app = express();
 
 const logMiddleware = (req, res, next) => {
@@ -10,12 +11,17 @@ const errorMiddleware = (req, res, next) => {
     next(new Error('ミドルウェアからのエラー'));
 };
 
-app.get('/',logMiddleware, (req, res) => {
-    try {
-        res.status(200).send('hello world\n');
-    } catch (err) {
+// ejsをビューエンジンに指定
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+    try{
+        const users = ['alpha', 'bravo', 'charlie', 'delta'];
+        res.render(path.join(__dirname, 'views', 'index.ejs'), { users: users });
+        // res.render(path.resolve(__dirname, 'views/index.ejs'));
+    } catch(err){
         res.status(500).send('Internal Server Error');
-        // errorMiddleware;
+        // errorMiddleware
     }
 });
 
