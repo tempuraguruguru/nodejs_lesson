@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/:id',logMiddleware,(req, res) => {
+app.get('/user/:id',logMiddleware,(req, res) => {
     try{
         res.status(200).send(req.params.id); // :idをreq.params.idとして受け取る
     } catch(err){
@@ -37,8 +37,7 @@ app.get('/:id',logMiddleware,(req, res) => {
 // publicディレクトリ以下のファイルを静的ファイルとして配信
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-// 包括的エラーハンドリング
-// 引数が4つ && 最後に定義されている
+// 包括的エラーハンドリング  引数が4つ && 最後に定義されている
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send('Internal Server Error');
