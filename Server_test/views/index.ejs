@@ -20,17 +20,40 @@
             <h5>3</h5>
         </div>
     </header>
+    <h3 class = "user-list-title">名前一覧</h3>
     <ul class="user-list">
         <% for (const user of users) { %>
             <li class="user-name"><%= user %></li>
         <% } %>
     </ul>
-    <input type="text" class="input-text" />
-    <button class="send-button">送信</button>
+    <div class = "button-text">
+        <div class = "input">
+            <p class = "button-text-title">新しい名前を追加</p>
+            <input type="text" class="input-text" />
+            <button class="send-button1">追加</button>
+        </div>
+        <div class = "delete">
+            <p class = "button-text-title">存在している名前を削除</p>
+            <input type="text" class="delete-text" />
+            <button class="send-button2">削除</button>
+        </div>
+        <div class = "update">
+            <p class = "button-text-title">存在している名前を変更</p>
+            <div class = "previous">
+                <p>変更元</p>
+                <input type="text" class="previous-text" />
+            </div>
+            <div class = "next">
+                <p>変更先</p>
+                <input type="text" class="next-text" />
+            </div>
+            <button class = "send-button3">変更</button>
+        </div>
+    </div>
     <script src="/static/index.js" defer></script>
     <footer>
-        <div class = "footer-left"></div>
-        <div class = "footer-right"></div>
+        <div class = "footer-left">21K1127</div>
+        <div class = "footer-right">非提供：法政大学情報科学部</div>
     </footer>
 </body>
 

@@ -4,6 +4,10 @@ const { MongoClient } = require('mongodb');
 const client = new MongoClient('mongodb://localhost:27017');
 const app = express();
 
+var num_insert = 0;
+var num_delete = 0;
+var num_update = 0;
+
 // Node.jsからmongodbに接続
 async function main() {
     // サーバーのlisten前に接続する
@@ -42,14 +46,59 @@ async function main() {
     });
 
     // APIの作成
-    app.post('/api/user', express.json(), async (req, res) => {
-        const name = req.body.name;
+    async function insertUser(name) { // 自分の書いた要件(機能)だけをテストできる
         if (!name) {
-            res.status(400).send('Bad Request');
-            return;
+            return { status: 400, body: 'Bad Request' };
+        }
+        if (typeof name !== 'string') {
+            return { status: 400, body: 'Bad Request' };
         }
         await db.collection('user').insertOne({ name: name });
-        res.status(200).send('Created');
+        return { status: 200, body: 'Created' };
+    }
+
+    async function deleteUser(name){
+        if(!name){
+            return {status: 400, body: 'Bad Request'};
+        }
+        if (typeof name !== 'string') {
+            return { status: 400, body: 'Bad Request' };
+        }
+        await db.collection('user').deleteOne({name: name});
+        return {status: 200, body: 'Delete'};
+    }
+
+    async function updateUser(name, setValue){
+        if(!name || !setValue){
+            return {status: 400, body: 'Bad Request'};
+        }
+        if (typeof name !== 'string' || typeof setValue !== 'string') {
+            return { status: 400, body: 'Bad Request' };
+        }
+        await db.collection('user').updateOne({name: name}, {$set:{name: setValue}});
+        return {status: 200, body: 'Update'};
+    }
+
+    app.post('/api/user-add', express.json(), async (req, res) => {
+        const name = req.body.name;
+        console.log("Insert" + (num_insert++) + ": " + name);
+        const { status, body } = await insertUser(name);
+        res.status(status).send(body);
+    });
+
+    app.post('/api/user-delete', express.json(), async (req, res) => {
+        const name = req.body.name;
+        console.log("Delete" + (num_delete++) + ": " + name);
+        const { status, body } = await deleteUser(name);
+        res.status(status).send(body);
+    });
+
+    app.post('/api/user-update', express.json(), async (req, res) => {
+        const name = req.body.name;
+        const new_name = req.body.new_name;
+        console.log("Update" + (num_update++) + ": " + name + "->" + new_name);
+        const { status, body } = await updateUser(name, new_name);
+        res.status(status).send(body);
     });
 
     // publicディレクトリ以下のファイルを静的ファイルとして配信
