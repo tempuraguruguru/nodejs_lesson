@@ -6,21 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "/static/style.css">
-    <title>top</title>
+    <title>楽曲検索</title>
 </head>
 
 <body>
     <header>
         <div class = "header-left">
-            <h2>テスト</h2>
+            <h2>Node.js/JavaScript入門 サンプルプログラム</h2>
         </div>
         <div class = "header-right">
-            <h5>1</h5>
-            <h5>2</h5>
-            <h5>3</h5>
+            <h5>A</h5>
+            <h5>B</h5>
+            <h5>C</h5>
         </div>
     </header>
-    <h3 class = "user-list-title">名前一覧</h3>
+    <h3 class = "user-list-title">登録アーティスト名一覧</h3>
     <ul class="user-list">
         <% for (const user of users) { %>
             <li class="user-name"><%= user %></li>
@@ -28,17 +28,17 @@
     </ul>
     <div class = "button-text">
         <div class = "input">
-            <p class = "button-text-title">新しい名前を追加</p>
+            <p class = "button-text-title">新しいアーティストを追加</p>
             <input type="text" class="input-text" />
             <button class="send-button1">追加</button>
         </div>
         <div class = "delete">
-            <p class = "button-text-title">存在している名前を削除</p>
+            <p class = "button-text-title">存在しているアーティストを削除</p>
             <input type="text" class="delete-text" />
             <button class="send-button2">削除</button>
         </div>
         <div class = "update">
-            <p class = "button-text-title">存在している名前を変更</p>
+            <p class = "button-text-title">存在しているアーティストを変更</p>
             <div class = "previous">
                 <p>変更元</p>
                 <input type="text" class="previous-text" />
@@ -52,7 +52,9 @@
     </div>
     <script src="/static/index.js" defer></script>
     <footer>
-        <div class = "footer-left">21K1127</div>
+        <div class = "footer-left">
+            <a href = "https://github.com/tempuraguruguru/nodejs_lesson/tree/main/Server_test">作成者のGitHub</a>
+        </div>
         <div class = "footer-right">非提供：法政大学情報科学部</div>
     </footer>
 </body>

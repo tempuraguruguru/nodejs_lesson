@@ -15,7 +15,7 @@ header{
 header .header-right{
     display: flex;
     flex-direction: row;
-    column-gap: 3%;
+    column-gap: 25px;
 }
 
 .user-list-title{
@@ -24,11 +24,16 @@ header .header-right{
 }
 
 .user-list{
-    padding: 1% 5% 3%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1% 5% 1%;
+    margin: 2% 3% 3%;
+    border: solid 1px red;
 }
 
 .user-name{
-    color: red;
+    color: black;
+    margin: 5px 20px 5px;
 }
 
 .button-text{
@@ -68,6 +73,11 @@ footer{
     justify-content: space-between;
     align-items: center;
     background-color:darkslategrey;
-    padding: 1% 5%;
+    padding: 2% 5%;
     color: white;
+}
+
+footer .footer-left a{
+    text-decoration: none;
+    color: aquamarine;
 }
