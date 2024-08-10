@@ -23,7 +23,7 @@
     <h3 class = "user-list-title">登録アーティスト名一覧</h3>
     <ul class="user-list">
         <% for (const user of users) { %>
-            <li class="user-name"><%= user %></li>
+            <li class="user-name" id = "<%= user %>"><%= user %></li>
         <% } %>
     </ul>
     <div class = "button-text">
