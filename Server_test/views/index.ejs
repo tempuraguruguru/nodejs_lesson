@@ -50,6 +50,27 @@
             <button class = "send-button3">変更</button>
         </div>
     </div>
+    <div class = "RepresentativeSongs">
+        <!-- <button class = "send-button">表示</button> -->
+        <div class = "artists">
+            <% for(let i = 0; i < (artists.length)/4; i++){ %>
+                <div class = "artist">
+                    <div class = "artist-name">
+                        <%=artists[4*i].toUpperCase() %>
+                    </div>
+                    <ul class = "artist-songs">
+                        <% for(let j = 0; j < 4; j++) { %>
+                            <% if(j % 4 != 0){ %>
+                                <li class = "artist-song">
+                                    <%=artists[4*i+j] %>
+                                </li>
+                            <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
+        </div>
+    </div>
     <script src="/static/index.js" defer></script>
     <footer>
         <div class = "footer-left">

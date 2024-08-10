@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('node:path');
+const { PythonShell } = require('python-shell');
 const { MongoClient } = require('mongodb');
+const { type } = require('node:os');
 const client = new MongoClient('mongodb://localhost:27017');
 const app = express();
 
@@ -22,13 +24,22 @@ async function main() {
     const errorMiddleware = (req, res, next) => {
         next(new Error('ミドルウェアからのエラー'));
     };
+
     // ejsをビューエンジンに指定
     app.set('view engine', 'ejs');
     app.get('/', async (req, res) => {
         try{
             const users = await db.collection('user').find().toArray();
             const names = users.map((user) => {return user.name});
-            res.render(path.join(__dirname, 'views', 'index.ejs'), { users: names });
+            // console.log(names);
+            // create songs
+            const pyshell = new PythonShell(path.resolve(__dirname, 'spotify.py'));
+            pyshell.send(names);
+            pyshell.on('message', function(data){
+                const songs = data.split(",");
+                // console.log(songs);
+                res.render(path.join(__dirname, 'views', 'index.ejs'), { users: names, artists: songs });
+            });
             // res.render(path.resolve(__dirname, 'views/index.ejs'));
         } catch(err){
             console.error(err);

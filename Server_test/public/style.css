@@ -67,6 +67,28 @@ header .header-right{
     margin-left: auto;
 }
 
+.RepresentativeSongs .artists{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5%;
+    row-gap: 5vw;
+    padding: 4%;
+}
+
+.RepresentativeSongs .artists .artist{
+    width: 30%;
+}
+
+.RepresentativeSongs .artists .artist .artist-name{
+    font-size: 2.75vw;
+    margin-bottom: 0.5vw;
+    font-weight: bold;
+}
+
+.RepresentativeSongs .artists .artist-songs{
+    margin-left: 2vw;
+}
+
 footer{
     display: flex;
     flex-direction: row;
