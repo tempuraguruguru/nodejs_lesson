@@ -16,6 +16,7 @@ header .header-right{
     display: flex;
     flex-direction: row;
     column-gap: 25px;
+    display: none;
 }
 
 .user-list-title{
@@ -70,13 +71,15 @@ header .header-right{
 .RepresentativeSongs .artists{
     display: flex;
     flex-wrap: wrap;
-    column-gap: 5%;
+    column-gap: 2%;
     row-gap: 5vw;
     padding: 4%;
 }
 
 .RepresentativeSongs .artists .artist{
-    width: 30%;
+    width: 28%;
+    border: solid 1px green;
+    padding: calc(2% - 1px);
 }
 
 .RepresentativeSongs .artists .artist .artist-name{
