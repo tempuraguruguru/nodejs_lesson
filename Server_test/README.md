@@ -25,5 +25,6 @@
 * 利用には以下のパッケージのインストールが必要<br>
 > pip<br>
 >> dotenv, spotipy<br>
+
 > npm<br>
 >> python-shell<br>
